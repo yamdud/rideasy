@@ -1,0 +1,6 @@
+framework module Pods_rideasyUITests {
+  umbrella header "Pods-rideasyUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

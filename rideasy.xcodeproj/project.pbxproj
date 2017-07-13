@@ -1,0 +1,948 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		609E86A3D56A93E7BEFFEE5C /* Pods_rideasyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A5A7AA59BEB0A4CA975A26 /* Pods_rideasyTests.framework */; };
+		7A036B881E3632FD00DA9CB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A036B871E3632FD00DA9CB1 /* AppDelegate.swift */; };
+		7A036B8A1E3632FD00DA9CB1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A036B891E3632FD00DA9CB1 /* ViewController.swift */; };
+		7A036B8D1E3632FD00DA9CB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A036B8B1E3632FD00DA9CB1 /* Main.storyboard */; };
+		7A036B8F1E3632FD00DA9CB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A036B8E1E3632FD00DA9CB1 /* Assets.xcassets */; };
+		7A036B921E3632FD00DA9CB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A036B901E3632FD00DA9CB1 /* LaunchScreen.storyboard */; };
+		7A036B9D1E3632FD00DA9CB1 /* rideasyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A036B9C1E3632FD00DA9CB1 /* rideasyTests.swift */; };
+		7A036BA81E3632FD00DA9CB1 /* rideasyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A036BA71E3632FD00DA9CB1 /* rideasyUITests.swift */; };
+		7A058E391EA77E60006BDF34 /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A058E381EA77E60006BDF34 /* AuthProvider.swift */; };
+		7A058E3B1EA7848B006BDF34 /* customLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A058E3A1EA7848B006BDF34 /* customLabel.swift */; };
+		7A058E3D1EA78FB4006BDF34 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A058E3C1EA78FB4006BDF34 /* CustomTextField.swift */; };
+		7A058E3F1EA7C408006BDF34 /* errorIndicatingImageview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A058E3E1EA7C408006BDF34 /* errorIndicatingImageview.swift */; };
+		7A058E411EA8BCF4006BDF34 /* DBProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A058E401EA8BCF4006BDF34 /* DBProvider.swift */; };
+		7A058E451EB0C602006BDF34 /* DriverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A058E441EB0C602006BDF34 /* DriverVC.swift */; };
+		7A058E471EB10A37006BDF34 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A058E461EB10A37006BDF34 /* Constants.swift */; };
+		7A05C82F1E9BC3790073976A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A05C82E1E9BC3790073976A /* GoogleService-Info.plist */; };
+		7A07D4701E63871B003A2F25 /* CustomMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A07D46F1E63871B003A2F25 /* CustomMenu.swift */; };
+		7A0BC1E11EB8E5AD006982F8 /* infoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0BC1E01EB8E5AD006982F8 /* infoView.swift */; };
+		7A0BC1E31EB9FE7C006982F8 /* rideRequestForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0BC1E21EB9FE7C006982F8 /* rideRequestForm.swift */; };
+		7A0ECA5F1EDDF42D005544C1 /* customCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A0ECA5E1EDDF42D005544C1 /* customCalloutView.xib */; };
+		7A0ECA611EDDF774005544C1 /* CustomCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0ECA601EDDF774005544C1 /* CustomCalloutView.swift */; };
+		7A0ECA631EDE05C3005544C1 /* RideRequestAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0ECA621EDE05C3005544C1 /* RideRequestAnnotationView.swift */; };
+		7A182B5B1E65ECE5002C3B35 /* RideDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A182B5A1E65ECE5002C3B35 /* RideDetails.swift */; };
+		7A1FB8321E78677200F4E671 /* fareBreakDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FB8311E78677200F4E671 /* fareBreakDown.swift */; };
+		7A2105331E37DC2C0004FF38 /* PassengerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2105321E37DC2C0004FF38 /* PassengerView.swift */; };
+		7A21D9851E9D478C00E75C8B /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A21D9841E9D478C00E75C8B /* loginViewController.swift */; };
+		7A21D9871E9D48D200E75C8B /* registerUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A21D9861E9D48D200E75C8B /* registerUser.swift */; };
+		7A2691371F0AD439005B560A /* infoIndicatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2691361F0AD439005B560A /* infoIndicatingView.swift */; };
+		7A30B4E91E8D6E4100B0B83F /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A30B4E81E8D6E4100B0B83F /* ResetPassword.swift */; };
+		7A34D6111E8AD19700E98C62 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A34D6101E8AD19700E98C62 /* Register.swift */; };
+		7A414ABC1E829C6500D75577 /* yourMiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A414ABB1E829C6500D75577 /* yourMiles.swift */; };
+		7A414ABE1E843EE800D75577 /* VoucherCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A414ABD1E843EE800D75577 /* VoucherCellTableViewCell.swift */; };
+		7A52D2CB1EB132B900DC26A5 /* passengerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A52D2CA1EB132B900DC26A5 /* passengerHandler.swift */; };
+		7A52D2CD1EB1368400DC26A5 /* CoordinateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A52D2CC1EB1368400DC26A5 /* CoordinateHelper.swift */; };
+		7A52D2D11EB1474D00DC26A5 /* PassengerMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A52D2D01EB1474D00DC26A5 /* PassengerMapView.swift */; };
+		7A59CF131EEEC5F80053CC5A /* SimpleAnnotationPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59CF121EEEC5F80053CC5A /* SimpleAnnotationPoint.swift */; };
+		7A6DC7621EC37E0C00F58CA3 /* driverHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6DC7611EC37E0C00F58CA3 /* driverHandler.swift */; };
+		7A6DC7641EC49A5400F58CA3 /* DriverMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6DC7631EC49A5400F58CA3 /* DriverMapView.swift */; };
+		7AA335621EDC4B7300E40BF1 /* yourDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA335611EDC4B7300E40BF1 /* yourDetailsVC.swift */; };
+		7AAA90256944F72226F4C7FF /* Pods_rideasy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D22DAEAFF0875B14376BCDD /* Pods_rideasy.framework */; };
+		7AAB1E6F1E9F98FA00BC41FA /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAB1E6E1E9F98FA00BC41FA /* Validation.swift */; };
+		7AB6598A1E5F16050033E912 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB659891E5F16050033E912 /* SWRevealViewController.m */; };
+		7AD870AD1E7AC57D00E1181B /* Ride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD870AC1E7AC57D00E1181B /* Ride.swift */; };
+		7AD98E701E5A44E00011567A /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD98E6F1E5A44E00011567A /* Slider.swift */; };
+		7AEF6B251E6986B200006DF2 /* CustomTableViewForRideDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEF6B241E6986B200006DF2 /* CustomTableViewForRideDetails.swift */; };
+		7AF8BC061E3F78DE008F8432 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF8BC051E3F78DE008F8432 /* MapKit.framework */; };
+		7AF8BC101E48E7D0008F8432 /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF8BC0F1E48E7D0008F8432 /* CustomPointAnnotation.swift */; };
+		7AF8BC121E4A1E23008F8432 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF8BC111E4A1E22008F8432 /* Animation.swift */; };
+		C43632452C6C6B06067FF6C4 /* Pods_rideasyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB1FE9E44EC62B063CB59C4 /* Pods_rideasyUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7A036B991E3632FD00DA9CB1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A036B7C1E3632FC00DA9CB1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A036B831E3632FD00DA9CB1;
+			remoteInfo = rideasy;
+		};
+		7A036BA41E3632FD00DA9CB1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A036B7C1E3632FC00DA9CB1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A036B831E3632FD00DA9CB1;
+			remoteInfo = rideasy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0FED728799A8C2611307DE1B /* Pods-rideasyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rideasyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rideasyUITests/Pods-rideasyUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2F6A493C7923D032AB8183E3 /* Pods-rideasyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rideasyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-rideasyUITests/Pods-rideasyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		429307883D659ACC1234ED9C /* Pods-rideasyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rideasyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rideasyTests/Pods-rideasyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		515AF9A8D0B4F35D73CD737C /* Pods-rideasy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rideasy.release.xcconfig"; path = "Pods/Target Support Files/Pods-rideasy/Pods-rideasy.release.xcconfig"; sourceTree = "<group>"; };
+		58A5A7AA59BEB0A4CA975A26 /* Pods_rideasyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rideasyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		61792CAB06332A4C095F5650 /* Pods-rideasyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rideasyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-rideasyTests/Pods-rideasyTests.release.xcconfig"; sourceTree = "<group>"; };
+		6CF4078BF8B52B0B9BDA344C /* Pods-rideasy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rideasy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rideasy/Pods-rideasy.debug.xcconfig"; sourceTree = "<group>"; };
+		6D22DAEAFF0875B14376BCDD /* Pods_rideasy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rideasy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A036B841E3632FD00DA9CB1 /* rideasy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rideasy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A036B871E3632FD00DA9CB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7A036B891E3632FD00DA9CB1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7A036B8C1E3632FD00DA9CB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7A036B8E1E3632FD00DA9CB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7A036B911E3632FD00DA9CB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7A036B931E3632FD00DA9CB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A036B981E3632FD00DA9CB1 /* rideasyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rideasyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A036B9C1E3632FD00DA9CB1 /* rideasyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rideasyTests.swift; sourceTree = "<group>"; };
+		7A036B9E1E3632FD00DA9CB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A036BA31E3632FD00DA9CB1 /* rideasyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rideasyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A036BA71E3632FD00DA9CB1 /* rideasyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rideasyUITests.swift; sourceTree = "<group>"; };
+		7A036BA91E3632FD00DA9CB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A058E381EA77E60006BDF34 /* AuthProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
+		7A058E3A1EA7848B006BDF34 /* customLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customLabel.swift; sourceTree = "<group>"; };
+		7A058E3C1EA78FB4006BDF34 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		7A058E3E1EA7C408006BDF34 /* errorIndicatingImageview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = errorIndicatingImageview.swift; sourceTree = "<group>"; };
+		7A058E401EA8BCF4006BDF34 /* DBProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBProvider.swift; sourceTree = "<group>"; };
+		7A058E441EB0C602006BDF34 /* DriverVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverVC.swift; sourceTree = "<group>"; };
+		7A058E461EB10A37006BDF34 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7A05C82E1E9BC3790073976A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7A07D46F1E63871B003A2F25 /* CustomMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMenu.swift; sourceTree = "<group>"; };
+		7A0BC1E01EB8E5AD006982F8 /* infoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoView.swift; sourceTree = "<group>"; };
+		7A0BC1E21EB9FE7C006982F8 /* rideRequestForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rideRequestForm.swift; sourceTree = "<group>"; };
+		7A0ECA5E1EDDF42D005544C1 /* customCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = customCalloutView.xib; sourceTree = "<group>"; };
+		7A0ECA601EDDF774005544C1 /* CustomCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCalloutView.swift; sourceTree = "<group>"; };
+		7A0ECA621EDE05C3005544C1 /* RideRequestAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RideRequestAnnotationView.swift; sourceTree = "<group>"; };
+		7A182B5A1E65ECE5002C3B35 /* RideDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RideDetails.swift; sourceTree = "<group>"; };
+		7A1FB8311E78677200F4E671 /* fareBreakDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fareBreakDown.swift; sourceTree = "<group>"; };
+		7A2105321E37DC2C0004FF38 /* PassengerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassengerView.swift; sourceTree = "<group>"; };
+		7A21D9841E9D478C00E75C8B /* loginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
+		7A21D9861E9D48D200E75C8B /* registerUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = registerUser.swift; sourceTree = "<group>"; };
+		7A2691361F0AD439005B560A /* infoIndicatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoIndicatingView.swift; sourceTree = "<group>"; };
+		7A30B4E81E8D6E4100B0B83F /* ResetPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
+		7A34D6101E8AD19700E98C62 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		7A414ABB1E829C6500D75577 /* yourMiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = yourMiles.swift; path = ../yourMiles.swift; sourceTree = "<group>"; };
+		7A414ABD1E843EE800D75577 /* VoucherCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoucherCellTableViewCell.swift; sourceTree = "<group>"; };
+		7A52D2CA1EB132B900DC26A5 /* passengerHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = passengerHandler.swift; sourceTree = "<group>"; };
+		7A52D2CC1EB1368400DC26A5 /* CoordinateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateHelper.swift; sourceTree = "<group>"; };
+		7A52D2D01EB1474D00DC26A5 /* PassengerMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassengerMapView.swift; sourceTree = "<group>"; };
+		7A59CF121EEEC5F80053CC5A /* SimpleAnnotationPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleAnnotationPoint.swift; sourceTree = "<group>"; };
+		7A6DC7611EC37E0C00F58CA3 /* driverHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = driverHandler.swift; sourceTree = "<group>"; };
+		7A6DC7631EC49A5400F58CA3 /* DriverMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverMapView.swift; sourceTree = "<group>"; };
+		7AA335611EDC4B7300E40BF1 /* yourDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = yourDetailsVC.swift; sourceTree = "<group>"; };
+		7AAB1E6E1E9F98FA00BC41FA /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
+		7AB659871E5F16040033E912 /* rideasy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rideasy-Bridging-Header.h"; sourceTree = "<group>"; };
+		7AB659881E5F16050033E912 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		7AB659891E5F16050033E912 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		7AD870AC1E7AC57D00E1181B /* Ride.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ride.swift; sourceTree = "<group>"; };
+		7AD98E6F1E5A44E00011567A /* Slider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
+		7AEF6B241E6986B200006DF2 /* CustomTableViewForRideDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewForRideDetails.swift; sourceTree = "<group>"; };
+		7AF8BC051E3F78DE008F8432 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		7AF8BC0F1E48E7D0008F8432 /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
+		7AF8BC111E4A1E22008F8432 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		8CB1FE9E44EC62B063CB59C4 /* Pods_rideasyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rideasyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7A036B811E3632FD00DA9CB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AF8BC061E3F78DE008F8432 /* MapKit.framework in Frameworks */,
+				7AAA90256944F72226F4C7FF /* Pods_rideasy.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A036B951E3632FD00DA9CB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				609E86A3D56A93E7BEFFEE5C /* Pods_rideasyTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A036BA01E3632FD00DA9CB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C43632452C6C6B06067FF6C4 /* Pods_rideasyUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7A036B7B1E3632FC00DA9CB1 = {
+			isa = PBXGroup;
+			children = (
+				7A036B861E3632FD00DA9CB1 /* rideasy */,
+				7A036B9B1E3632FD00DA9CB1 /* rideasyTests */,
+				7A036BA61E3632FD00DA9CB1 /* rideasyUITests */,
+				7A036B851E3632FD00DA9CB1 /* Products */,
+				7AF8BC041E3F78DE008F8432 /* Frameworks */,
+				8FF61CA164F9067CBFBE49AD /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		7A036B851E3632FD00DA9CB1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7A036B841E3632FD00DA9CB1 /* rideasy.app */,
+				7A036B981E3632FD00DA9CB1 /* rideasyTests.xctest */,
+				7A036BA31E3632FD00DA9CB1 /* rideasyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7A036B861E3632FD00DA9CB1 /* rideasy */ = {
+			isa = PBXGroup;
+			children = (
+				7AAB1E721E9FE18A00BC41FA /* controller */,
+				7AAB1E711E9FE18100BC41FA /* view */,
+				7AAB1E701E9FE17600BC41FA /* model */,
+				7A182B5D1E65ED18002C3B35 /* helper */,
+				7AB659861E5F15DC0033E912 /* SwRvealViewController */,
+				7A036B8B1E3632FD00DA9CB1 /* Main.storyboard */,
+				7A036B871E3632FD00DA9CB1 /* AppDelegate.swift */,
+				7A21D9841E9D478C00E75C8B /* loginViewController.swift */,
+				7A1FB8311E78677200F4E671 /* fareBreakDown.swift */,
+				7A036B8E1E3632FD00DA9CB1 /* Assets.xcassets */,
+				7A0ECA5E1EDDF42D005544C1 /* customCalloutView.xib */,
+				7A0ECA601EDDF774005544C1 /* CustomCalloutView.swift */,
+				7A036B901E3632FD00DA9CB1 /* LaunchScreen.storyboard */,
+				7A05C82E1E9BC3790073976A /* GoogleService-Info.plist */,
+				7A036B931E3632FD00DA9CB1 /* Info.plist */,
+			);
+			path = rideasy;
+			sourceTree = "<group>";
+		};
+		7A036B9B1E3632FD00DA9CB1 /* rideasyTests */ = {
+			isa = PBXGroup;
+			children = (
+				7A036B9C1E3632FD00DA9CB1 /* rideasyTests.swift */,
+				7A036B9E1E3632FD00DA9CB1 /* Info.plist */,
+			);
+			path = rideasyTests;
+			sourceTree = "<group>";
+		};
+		7A036BA61E3632FD00DA9CB1 /* rideasyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7A036BA71E3632FD00DA9CB1 /* rideasyUITests.swift */,
+				7A036BA91E3632FD00DA9CB1 /* Info.plist */,
+			);
+			path = rideasyUITests;
+			sourceTree = "<group>";
+		};
+		7A182B5D1E65ED18002C3B35 /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				7AAB1E6E1E9F98FA00BC41FA /* Validation.swift */,
+				7AF8BC111E4A1E22008F8432 /* Animation.swift */,
+				7A058E381EA77E60006BDF34 /* AuthProvider.swift */,
+				7A058E401EA8BCF4006BDF34 /* DBProvider.swift */,
+				7A058E461EB10A37006BDF34 /* Constants.swift */,
+				7A6DC7611EC37E0C00F58CA3 /* driverHandler.swift */,
+				7A52D2CA1EB132B900DC26A5 /* passengerHandler.swift */,
+				7A52D2CC1EB1368400DC26A5 /* CoordinateHelper.swift */,
+			);
+			name = helper;
+			sourceTree = "<group>";
+		};
+		7AAB1E701E9FE17600BC41FA /* model */ = {
+			isa = PBXGroup;
+			children = (
+				7AD870AC1E7AC57D00E1181B /* Ride.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		7AAB1E711E9FE18100BC41FA /* view */ = {
+			isa = PBXGroup;
+			children = (
+				7A0BC1E01EB8E5AD006982F8 /* infoView.swift */,
+				7A2691361F0AD439005B560A /* infoIndicatingView.swift */,
+				7AD98E6F1E5A44E00011567A /* Slider.swift */,
+				7AEF6B241E6986B200006DF2 /* CustomTableViewForRideDetails.swift */,
+				7A414ABD1E843EE800D75577 /* VoucherCellTableViewCell.swift */,
+				7AF8BC0F1E48E7D0008F8432 /* CustomPointAnnotation.swift */,
+				7A59CF121EEEC5F80053CC5A /* SimpleAnnotationPoint.swift */,
+				7A0ECA621EDE05C3005544C1 /* RideRequestAnnotationView.swift */,
+				7A058E3A1EA7848B006BDF34 /* customLabel.swift */,
+				7A058E3E1EA7C408006BDF34 /* errorIndicatingImageview.swift */,
+				7A52D2D01EB1474D00DC26A5 /* PassengerMapView.swift */,
+				7A6DC7631EC49A5400F58CA3 /* DriverMapView.swift */,
+				7A058E3C1EA78FB4006BDF34 /* CustomTextField.swift */,
+				7A0BC1E21EB9FE7C006982F8 /* rideRequestForm.swift */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		7AAB1E721E9FE18A00BC41FA /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				7A07D46F1E63871B003A2F25 /* CustomMenu.swift */,
+				7A34D6101E8AD19700E98C62 /* Register.swift */,
+				7A414ABB1E829C6500D75577 /* yourMiles.swift */,
+				7A182B5A1E65ECE5002C3B35 /* RideDetails.swift */,
+				7A30B4E81E8D6E4100B0B83F /* ResetPassword.swift */,
+				7A2105321E37DC2C0004FF38 /* PassengerView.swift */,
+				7A036B891E3632FD00DA9CB1 /* ViewController.swift */,
+				7A21D9861E9D48D200E75C8B /* registerUser.swift */,
+				7A058E441EB0C602006BDF34 /* DriverVC.swift */,
+				7AA335611EDC4B7300E40BF1 /* yourDetailsVC.swift */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		7AB659861E5F15DC0033E912 /* SwRvealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7AB659881E5F16050033E912 /* SWRevealViewController.h */,
+				7AB659891E5F16050033E912 /* SWRevealViewController.m */,
+				7AB659871E5F16040033E912 /* rideasy-Bridging-Header.h */,
+			);
+			name = SwRvealViewController;
+			sourceTree = "<group>";
+		};
+		7AF8BC041E3F78DE008F8432 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7AF8BC051E3F78DE008F8432 /* MapKit.framework */,
+				6D22DAEAFF0875B14376BCDD /* Pods_rideasy.framework */,
+				58A5A7AA59BEB0A4CA975A26 /* Pods_rideasyTests.framework */,
+				8CB1FE9E44EC62B063CB59C4 /* Pods_rideasyUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8FF61CA164F9067CBFBE49AD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6CF4078BF8B52B0B9BDA344C /* Pods-rideasy.debug.xcconfig */,
+				515AF9A8D0B4F35D73CD737C /* Pods-rideasy.release.xcconfig */,
+				429307883D659ACC1234ED9C /* Pods-rideasyTests.debug.xcconfig */,
+				61792CAB06332A4C095F5650 /* Pods-rideasyTests.release.xcconfig */,
+				0FED728799A8C2611307DE1B /* Pods-rideasyUITests.debug.xcconfig */,
+				2F6A493C7923D032AB8183E3 /* Pods-rideasyUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7A036B831E3632FD00DA9CB1 /* rideasy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A036BAC1E3632FD00DA9CB1 /* Build configuration list for PBXNativeTarget "rideasy" */;
+			buildPhases = (
+				2A84AD2C2897F900591CFCD5 /* [CP] Check Pods Manifest.lock */,
+				7A036B801E3632FD00DA9CB1 /* Sources */,
+				7A036B811E3632FD00DA9CB1 /* Frameworks */,
+				7A036B821E3632FD00DA9CB1 /* Resources */,
+				FD9AB617671A56C97E19B3F3 /* [CP] Embed Pods Frameworks */,
+				6F03898574B5641401AE3D7D /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = rideasy;
+			productName = rideasy;
+			productReference = 7A036B841E3632FD00DA9CB1 /* rideasy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7A036B971E3632FD00DA9CB1 /* rideasyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A036BAF1E3632FD00DA9CB1 /* Build configuration list for PBXNativeTarget "rideasyTests" */;
+			buildPhases = (
+				0F2DFFE49E6BAEA020782176 /* [CP] Check Pods Manifest.lock */,
+				7A036B941E3632FD00DA9CB1 /* Sources */,
+				7A036B951E3632FD00DA9CB1 /* Frameworks */,
+				7A036B961E3632FD00DA9CB1 /* Resources */,
+				D38B8DFC2ED5D8978B2CA6E4 /* [CP] Embed Pods Frameworks */,
+				250E25AC744D743918613D35 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A036B9A1E3632FD00DA9CB1 /* PBXTargetDependency */,
+			);
+			name = rideasyTests;
+			productName = rideasyTests;
+			productReference = 7A036B981E3632FD00DA9CB1 /* rideasyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7A036BA21E3632FD00DA9CB1 /* rideasyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A036BB21E3632FD00DA9CB1 /* Build configuration list for PBXNativeTarget "rideasyUITests" */;
+			buildPhases = (
+				2693126D093BB2A21A690805 /* [CP] Check Pods Manifest.lock */,
+				7A036B9F1E3632FD00DA9CB1 /* Sources */,
+				7A036BA01E3632FD00DA9CB1 /* Frameworks */,
+				7A036BA11E3632FD00DA9CB1 /* Resources */,
+				BD87018C70FF2762F306361C /* [CP] Embed Pods Frameworks */,
+				E5E7F2BE120B278F0304FB3C /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A036BA51E3632FD00DA9CB1 /* PBXTargetDependency */,
+			);
+			name = rideasyUITests;
+			productName = rideasyUITests;
+			productReference = 7A036BA31E3632FD00DA9CB1 /* rideasyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7A036B7C1E3632FC00DA9CB1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = Gurung;
+				TargetAttributes = {
+					7A036B831E3632FD00DA9CB1 = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = 2U6J8H27Z7;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					7A036B971E3632FD00DA9CB1 = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = 2U6J8H27Z7;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7A036B831E3632FD00DA9CB1;
+					};
+					7A036BA21E3632FD00DA9CB1 = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = 2U6J8H27Z7;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7A036B831E3632FD00DA9CB1;
+					};
+				};
+			};
+			buildConfigurationList = 7A036B7F1E3632FC00DA9CB1 /* Build configuration list for PBXProject "rideasy" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7A036B7B1E3632FC00DA9CB1;
+			productRefGroup = 7A036B851E3632FD00DA9CB1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7A036B831E3632FD00DA9CB1 /* rideasy */,
+				7A036B971E3632FD00DA9CB1 /* rideasyTests */,
+				7A036BA21E3632FD00DA9CB1 /* rideasyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7A036B821E3632FD00DA9CB1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A0ECA5F1EDDF42D005544C1 /* customCalloutView.xib in Resources */,
+				7A036B921E3632FD00DA9CB1 /* LaunchScreen.storyboard in Resources */,
+				7A05C82F1E9BC3790073976A /* GoogleService-Info.plist in Resources */,
+				7A036B8F1E3632FD00DA9CB1 /* Assets.xcassets in Resources */,
+				7A036B8D1E3632FD00DA9CB1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A036B961E3632FD00DA9CB1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A036BA11E3632FD00DA9CB1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0F2DFFE49E6BAEA020782176 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		250E25AC744D743918613D35 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-rideasyTests/Pods-rideasyTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2693126D093BB2A21A690805 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2A84AD2C2897F900591CFCD5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6F03898574B5641401AE3D7D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-rideasy/Pods-rideasy-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD87018C70FF2762F306361C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-rideasyUITests/Pods-rideasyUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D38B8DFC2ED5D8978B2CA6E4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-rideasyTests/Pods-rideasyTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5E7F2BE120B278F0304FB3C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-rideasyUITests/Pods-rideasyUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD9AB617671A56C97E19B3F3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-rideasy/Pods-rideasy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7A036B801E3632FD00DA9CB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A07D4701E63871B003A2F25 /* CustomMenu.swift in Sources */,
+				7A59CF131EEEC5F80053CC5A /* SimpleAnnotationPoint.swift in Sources */,
+				7A036B8A1E3632FD00DA9CB1 /* ViewController.swift in Sources */,
+				7A30B4E91E8D6E4100B0B83F /* ResetPassword.swift in Sources */,
+				7A058E3F1EA7C408006BDF34 /* errorIndicatingImageview.swift in Sources */,
+				7A2105331E37DC2C0004FF38 /* PassengerView.swift in Sources */,
+				7A058E3D1EA78FB4006BDF34 /* CustomTextField.swift in Sources */,
+				7AA335621EDC4B7300E40BF1 /* yourDetailsVC.swift in Sources */,
+				7AEF6B251E6986B200006DF2 /* CustomTableViewForRideDetails.swift in Sources */,
+				7A058E451EB0C602006BDF34 /* DriverVC.swift in Sources */,
+				7AD870AD1E7AC57D00E1181B /* Ride.swift in Sources */,
+				7A52D2D11EB1474D00DC26A5 /* PassengerMapView.swift in Sources */,
+				7A0ECA611EDDF774005544C1 /* CustomCalloutView.swift in Sources */,
+				7A058E3B1EA7848B006BDF34 /* customLabel.swift in Sources */,
+				7A2691371F0AD439005B560A /* infoIndicatingView.swift in Sources */,
+				7AB6598A1E5F16050033E912 /* SWRevealViewController.m in Sources */,
+				7A52D2CD1EB1368400DC26A5 /* CoordinateHelper.swift in Sources */,
+				7A21D9851E9D478C00E75C8B /* loginViewController.swift in Sources */,
+				7A0ECA631EDE05C3005544C1 /* RideRequestAnnotationView.swift in Sources */,
+				7A52D2CB1EB132B900DC26A5 /* passengerHandler.swift in Sources */,
+				7AF8BC101E48E7D0008F8432 /* CustomPointAnnotation.swift in Sources */,
+				7A0BC1E31EB9FE7C006982F8 /* rideRequestForm.swift in Sources */,
+				7AF8BC121E4A1E23008F8432 /* Animation.swift in Sources */,
+				7A6DC7641EC49A5400F58CA3 /* DriverMapView.swift in Sources */,
+				7A6DC7621EC37E0C00F58CA3 /* driverHandler.swift in Sources */,
+				7A414ABE1E843EE800D75577 /* VoucherCellTableViewCell.swift in Sources */,
+				7A21D9871E9D48D200E75C8B /* registerUser.swift in Sources */,
+				7AD98E701E5A44E00011567A /* Slider.swift in Sources */,
+				7A1FB8321E78677200F4E671 /* fareBreakDown.swift in Sources */,
+				7A182B5B1E65ECE5002C3B35 /* RideDetails.swift in Sources */,
+				7A058E471EB10A37006BDF34 /* Constants.swift in Sources */,
+				7A036B881E3632FD00DA9CB1 /* AppDelegate.swift in Sources */,
+				7A34D6111E8AD19700E98C62 /* Register.swift in Sources */,
+				7A058E391EA77E60006BDF34 /* AuthProvider.swift in Sources */,
+				7A058E411EA8BCF4006BDF34 /* DBProvider.swift in Sources */,
+				7AAB1E6F1E9F98FA00BC41FA /* Validation.swift in Sources */,
+				7A0BC1E11EB8E5AD006982F8 /* infoView.swift in Sources */,
+				7A414ABC1E829C6500D75577 /* yourMiles.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A036B941E3632FD00DA9CB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A036B9D1E3632FD00DA9CB1 /* rideasyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A036B9F1E3632FD00DA9CB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A036BA81E3632FD00DA9CB1 /* rideasyUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7A036B9A1E3632FD00DA9CB1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A036B831E3632FD00DA9CB1 /* rideasy */;
+			targetProxy = 7A036B991E3632FD00DA9CB1 /* PBXContainerItemProxy */;
+		};
+		7A036BA51E3632FD00DA9CB1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A036B831E3632FD00DA9CB1 /* rideasy */;
+			targetProxy = 7A036BA41E3632FD00DA9CB1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7A036B8B1E3632FD00DA9CB1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A036B8C1E3632FD00DA9CB1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7A036B901E3632FD00DA9CB1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A036B911E3632FD00DA9CB1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7A036BAA1E3632FD00DA9CB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7A036BAB1E3632FD00DA9CB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7A036BAD1E3632FD00DA9CB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6CF4078BF8B52B0B9BDA344C /* Pods-rideasy.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 2U6J8H27Z7;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = rideasy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gurung.rideasy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "rideasy/rideasy-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		7A036BAE1E3632FD00DA9CB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 515AF9A8D0B4F35D73CD737C /* Pods-rideasy.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 2U6J8H27Z7;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = rideasy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gurung.rideasy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "rideasy/rideasy-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		7A036BB01E3632FD00DA9CB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 429307883D659ACC1234ED9C /* Pods-rideasyTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 2U6J8H27Z7;
+				INFOPLIST_FILE = rideasyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gurung.rideasyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rideasy.app/rideasy";
+			};
+			name = Debug;
+		};
+		7A036BB11E3632FD00DA9CB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61792CAB06332A4C095F5650 /* Pods-rideasyTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 2U6J8H27Z7;
+				INFOPLIST_FILE = rideasyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gurung.rideasyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rideasy.app/rideasy";
+			};
+			name = Release;
+		};
+		7A036BB31E3632FD00DA9CB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0FED728799A8C2611307DE1B /* Pods-rideasyUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 2U6J8H27Z7;
+				INFOPLIST_FILE = rideasyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gurung.rideasyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = rideasy;
+			};
+			name = Debug;
+		};
+		7A036BB41E3632FD00DA9CB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F6A493C7923D032AB8183E3 /* Pods-rideasyUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 2U6J8H27Z7;
+				INFOPLIST_FILE = rideasyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gurung.rideasyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = rideasy;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7A036B7F1E3632FC00DA9CB1 /* Build configuration list for PBXProject "rideasy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A036BAA1E3632FD00DA9CB1 /* Debug */,
+				7A036BAB1E3632FD00DA9CB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A036BAC1E3632FD00DA9CB1 /* Build configuration list for PBXNativeTarget "rideasy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A036BAD1E3632FD00DA9CB1 /* Debug */,
+				7A036BAE1E3632FD00DA9CB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A036BAF1E3632FD00DA9CB1 /* Build configuration list for PBXNativeTarget "rideasyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A036BB01E3632FD00DA9CB1 /* Debug */,
+				7A036BB11E3632FD00DA9CB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A036BB21E3632FD00DA9CB1 /* Build configuration list for PBXNativeTarget "rideasyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A036BB31E3632FD00DA9CB1 /* Debug */,
+				7A036BB41E3632FD00DA9CB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7A036B7C1E3632FC00DA9CB1 /* Project object */;
+}
