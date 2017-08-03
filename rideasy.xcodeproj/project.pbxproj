@@ -45,6 +45,7 @@
 		7A59CF131EEEC5F80053CC5A /* SimpleAnnotationPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59CF121EEEC5F80053CC5A /* SimpleAnnotationPoint.swift */; };
 		7A6DC7621EC37E0C00F58CA3 /* driverHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6DC7611EC37E0C00F58CA3 /* driverHandler.swift */; };
 		7A6DC7641EC49A5400F58CA3 /* DriverMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6DC7631EC49A5400F58CA3 /* DriverMapView.swift */; };
+		7A9B39801F31280800045236 /* infoViewForDrivers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9B397F1F31280800045236 /* infoViewForDrivers.swift */; };
 		7AA335621EDC4B7300E40BF1 /* yourDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA335611EDC4B7300E40BF1 /* yourDetailsVC.swift */; };
 		7AAA90256944F72226F4C7FF /* Pods_rideasy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D22DAEAFF0875B14376BCDD /* Pods_rideasy.framework */; };
 		7AAB1E6F1E9F98FA00BC41FA /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAB1E6E1E9F98FA00BC41FA /* Validation.swift */; };
@@ -127,6 +128,7 @@
 		7A59CF121EEEC5F80053CC5A /* SimpleAnnotationPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleAnnotationPoint.swift; sourceTree = "<group>"; };
 		7A6DC7611EC37E0C00F58CA3 /* driverHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = driverHandler.swift; sourceTree = "<group>"; };
 		7A6DC7631EC49A5400F58CA3 /* DriverMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverMapView.swift; sourceTree = "<group>"; };
+		7A9B397F1F31280800045236 /* infoViewForDrivers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoViewForDrivers.swift; sourceTree = "<group>"; };
 		7AA335611EDC4B7300E40BF1 /* yourDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = yourDetailsVC.swift; sourceTree = "<group>"; };
 		7AAB1E6E1E9F98FA00BC41FA /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		7AB659871E5F16040033E912 /* rideasy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rideasy-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				7A036B871E3632FD00DA9CB1 /* AppDelegate.swift */,
 				7A21D9841E9D478C00E75C8B /* loginViewController.swift */,
 				7A1FB8311E78677200F4E671 /* fareBreakDown.swift */,
+				7A414ABB1E829C6500D75577 /* yourMiles.swift */,
 				7A036B8E1E3632FD00DA9CB1 /* Assets.xcassets */,
 				7A0ECA5E1EDDF42D005544C1 /* customCalloutView.xib */,
 				7A0ECA601EDDF774005544C1 /* CustomCalloutView.swift */,
@@ -259,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				7A0BC1E01EB8E5AD006982F8 /* infoView.swift */,
+				7A9B397F1F31280800045236 /* infoViewForDrivers.swift */,
 				7A2691361F0AD439005B560A /* infoIndicatingView.swift */,
 				7AD98E6F1E5A44E00011567A /* Slider.swift */,
 				7AEF6B241E6986B200006DF2 /* CustomTableViewForRideDetails.swift */,
@@ -281,7 +285,6 @@
 			children = (
 				7A07D46F1E63871B003A2F25 /* CustomMenu.swift */,
 				7A34D6101E8AD19700E98C62 /* Register.swift */,
-				7A414ABB1E829C6500D75577 /* yourMiles.swift */,
 				7A182B5A1E65ECE5002C3B35 /* RideDetails.swift */,
 				7A30B4E81E8D6E4100B0B83F /* ResetPassword.swift */,
 				7A2105321E37DC2C0004FF38 /* PassengerView.swift */,
@@ -653,6 +656,7 @@
 				7A036B881E3632FD00DA9CB1 /* AppDelegate.swift in Sources */,
 				7A34D6111E8AD19700E98C62 /* Register.swift in Sources */,
 				7A058E391EA77E60006BDF34 /* AuthProvider.swift in Sources */,
+				7A9B39801F31280800045236 /* infoViewForDrivers.swift in Sources */,
 				7A058E411EA8BCF4006BDF34 /* DBProvider.swift in Sources */,
 				7AAB1E6F1E9F98FA00BC41FA /* Validation.swift in Sources */,
 				7A0BC1E11EB8E5AD006982F8 /* infoView.swift in Sources */,

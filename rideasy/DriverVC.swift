@@ -13,9 +13,12 @@ import FirebaseDatabase
 
 class DriverVC: UIViewController, MKMapViewDelegate, RideController, CLLocationManagerDelegate  {
     
+    
 
     @IBOutlet weak var mapDisplayView: DriverMapView!
     @IBOutlet weak var menu: UIBarButtonItem!
+    
+    @IBOutlet weak var infoView: infoViewForDrivers!
     
     @IBOutlet weak var statusSwitch: UISwitch!
     var locationManager = CLLocationManager()
@@ -56,14 +59,12 @@ class DriverVC: UIViewController, MKMapViewDelegate, RideController, CLLocationM
         mapDisplayView.AddPin(LatLong: coordinate, pinImageName: "newJob",id: passengerId, startAdd: startingAddress, driverCurrentLocation: currentLocation)
         
     }
-    func rideAccepted(lat: Double, long: Double) {
-        print("in rideaccepted delegate")
+    func rideAccepted(pickupCoordinate: CLLocationCoordinate2D, pickupAddress: String, destinationCoordinate: CLLocationCoordinate2D, destionAddress: String) {
         mapDisplayView.removeAnnotations(mapDisplayView.annotations)
-        let corrdinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-       
-        mapDisplayView.addCustomAnnotaion(latLong: corrdinate)
+        mapDisplayView.addCustomAnnotaion(latLong: pickupCoordinate)
+        infoView.rideActive()
+        infoView.setupAddressLabels(address: pickupAddress, option: "pickup")
     }
-
     
     func findCurrentLocation(){
         locationManager = CLLocationManager()
@@ -151,6 +152,8 @@ class DriverVC: UIViewController, MKMapViewDelegate, RideController, CLLocationM
         mapDisplayView.setRegion(region, animated: true)
         currentLocation = (location?.coordinate)!
         
+        locationManager.stopUpdatingLocation()
+        
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -158,7 +161,14 @@ class DriverVC: UIViewController, MKMapViewDelegate, RideController, CLLocationM
     }
 
     @objc private func acceptRide(){
-        print("Ride is Accepted")
+        print("Ride is Accepted \(currentLocation)")
+        driverHandler.Instance.updateCurrentDriverLocation(location: currentLocation)
+    }
+    
+    @IBAction func cancelRide(_ sender: Any) {
+    }
+    
+    @IBAction func startRide(_ sender: Any) {
     }
     
 

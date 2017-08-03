@@ -55,13 +55,13 @@ class Animation: CAAnimation {
     }
     
     
-    func AnimatePayment(PaymentView : UIView){
+    func AnimatePayment(paymentView : UIView){
         if paymentViewOpen == false {
-            PaymentView.transform = CGAffineTransform.init(translationX: 0, y: -PaymentView.frame.height)
+            paymentView.transform = CGAffineTransform.init(translationX: 0, y: -paymentView.frame.height)
         
             UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveEaseInOut, animations: {
-                PaymentView.transform = CGAffineTransform.identity
-                PaymentView.alpha = 1.0
+                paymentView.transform = CGAffineTransform.identity
+                paymentView.alpha = 1.0
                 
             }, completion: {(success:Bool) in
                 print("Sucess")
@@ -82,12 +82,12 @@ class Animation: CAAnimation {
     func AnimateSliderWithButtons(DisTimeView:UIStackView, timeProxStackView: UIStackView,
                                   SliderView : UIStackView , callDriver: UIButton , infoView : UIView, SliderViewActualHeight: CGFloat, approxtimeActualHeight: CGFloat){
         
-        timeProxStackView.isHidden = false
+        //DisTimeView.alpha = 0.0
         SliderView.isHidden = false
         callDriver.isHidden = false
-        SliderView.alpha = 0.0
-        timeProxStackView.alpha = 0.0
-        DisTimeView.alpha = 1.0
+        //SliderView.alpha = 0.0
+        //timeProxStackView.alpha = 0.0
+        timeProxStackView.isHidden = false
         timeProxStackView.transform = CGAffineTransform.init(translationX: 0, y: +approxtimeActualHeight)
         SliderView.transform = CGAffineTransform.init(translationX: 0, y: +SliderViewActualHeight)
         callDriver.transform = CGAffineTransform.init(translationX: -100, y: 0)
@@ -95,24 +95,47 @@ class Animation: CAAnimation {
         infoView.transform = CGAffineTransform.init(translationX: 0, y: +(SliderViewActualHeight + approxtimeActualHeight))
         print("approx height" , timeProxStackView.frame.height, SliderView.frame.height)
       
-        UIView.animate(withDuration: 0.8, animations: {
+        UIView.animate(withDuration: 0.5, animations: {
            
             timeProxStackView.transform = CGAffineTransform.identity
             SliderView.transform = CGAffineTransform.identity
             callDriver.transform = CGAffineTransform.identity
             infoView.transform = CGAffineTransform.identity
+           DisTimeView.alpha = 1.0
             SliderView.alpha = 1.0
             timeProxStackView.alpha = 1.0
         }, completion: {(success:Bool) in
             
         
         })
+        
     }
     func AnimateHideInfo(infoView:UIView){
-        UIView.animate(withDuration: 0.5, animations: {
-            infoView.transform = CGAffineTransform.init(translationX: 0, y: -infoView.frame.height)
-            infoView.alpha = 0.0
-            infoView.isHidden = true
+        UIView.animate(withDuration: 0.6, animations: {
+            infoView.transform = CGAffineTransform.init(translationX: 0, y: infoView.frame.height)
+        }, completion: {(success: Bool) in
+            //infoView.alpha = 0.0
+            infoView.isHidden = false
         })
+        }
+    
+    func slideUp(slideBtn:UIButton){
+        UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveEaseIn, animations: {
+            
+           slideBtn.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi * 2))
+        }) { (success: Bool) in
+            
+        }
+    }
+    func slideDown(slideBtn: UIButton,infoView: UIView,sliderView: UIStackView){
+         infoView.transform = CGAffineTransform.init(translationX: 0, y: 0)
+        sliderView.alpha = 0.0
+        UIView.animate(withDuration: 0.4,animations:  {
+             slideBtn.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+            sliderView.isHidden = true
+           infoView.transform = CGAffineTransform.identity
+            
+        })
+        
     }
 }

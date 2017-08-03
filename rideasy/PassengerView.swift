@@ -19,13 +19,15 @@ import FirebaseAuth
 
 class  PassengerView: UIViewController,MKMapViewDelegate, CLLocationManagerDelegate,UITableViewDelegate,UITextFieldDelegate, UITableViewDataSource, rideAcceptedProtocol{
     
+
     
-    @IBOutlet weak var NavBarMenuItem: UIBarButtonItem!
     
-    @IBOutlet weak var MapView: PassengerMapView!
-    @IBOutlet weak var PopDownMenuView: rideRequestForm!
-    @IBOutlet weak var LocationFormView: UIView!
-    @IBOutlet weak var PaymentView: UIView!
+    @IBOutlet weak var navBarMenuItem: UIBarButtonItem!
+    
+    @IBOutlet weak var passengerMapView: PassengerMapView!
+    @IBOutlet weak var popDownMenuView: rideRequestForm!
+    //@IBOutlet weak var LocationFormView: UIView!
+    //@IBOutlet weak var paymentView: UIView!
     @IBOutlet weak var StartingPointTextBox: UITextField!
     @IBOutlet weak var DestinationTextView: UITextField!
     @IBOutlet weak var ApproxTotalLabel: UILabel!
@@ -36,7 +38,7 @@ class  PassengerView: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
     @IBOutlet weak var searchButton: UIBarButtonItem!
     @IBOutlet weak var formButton: UIButton!
     
-    @IBOutlet weak var InfoView: infoView!
+    @IBOutlet weak var infoView: infoView!
     
     
     
@@ -47,6 +49,9 @@ class  PassengerView: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
     //Starting Location
     private var startingLocation = CLLocationCoordinate2D()
     var isWaitingForRide = false
+    
+    //message view to notify passengers 
+    var messageView = infoIndicatingView()
     
     
     var activeTextBox = UITextField()
@@ -61,13 +66,12 @@ class  PassengerView: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
     var AutoCompleteTable = UITableView()
     var fetcher : GMSAutocompleteFetcher?
     typealias Edges = (ne: CLLocationCoordinate2D , sw: CLLocationCoordinate2D)
-    
+    //direction variables
     var distance = Double()
     var ETA = Double()
     
     var PopUpView:UIView?
     
-    let helper = CoordinateHelper()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.layoutIfNeeded()
@@ -77,56 +81,77 @@ class  PassengerView: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
         DestinationTextView.delegate = self
         passengerHandler.Instance.delegate = self
         passengerHandler.Instance.acceptedRide()
-        MapView.delegate = self
+        passengerHandler.Instance.rideRequestedButNotAccepted()
+        passengerMapView.delegate = self
         findCurrentLocation()
         
         locationTuples = [(StartingPointTextBox  , nil,nil),(DestinationTextView, nil,nil)]
+        //creating autocomplete table
         createTable()
+        
         if self.revealViewController() != nil {
-            print("in anv menu", self.revealViewController())
-            NavBarMenuItem.target = self.revealViewController()
-            NavBarMenuItem.action = #selector(SWRevealViewController.revealToggle(_:))
+            navBarMenuItem.target = self.revealViewController()
+            navBarMenuItem.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
             
         }
+        
+        
     }
-   
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+    }
     //MARK--delegate functions from passengerHangler
-    func rideRequested(time: Double, distance: Double, cost: Double, destinationAdd: String) {
+    func rideRequested(time: Double, distance: Double, cost: Double, destinationAdd: String,destinationCoordinate: CLLocationCoordinate2D, startingCoordinate: CLLocationCoordinate2D) {
         
         isWaitingForRide = true
-        InfoView.ShowView(distance: distance, time: time, cost: cost, destinationAddress: destinationAdd)
-        InfoView.InfoViewSetup(option: "sliderin")
+        infoView.setupLabels(distance: distance, time: time, cost: cost, destinationAddress: destinationAdd)
+        if passengerMapView.overlays.count == 0 {
+            passengerMapView.calculateRoute(origin: startingCoordinate, destination: destinationCoordinate)
+            
+        }
+        infoView.InfoViewSetup(option: "sliderin")
+        passengerMapView.AddPin(LatLong: destinationCoordinate, pinImageName: "DestinationPin")
+        passengerMapView.AddPin(LatLong: startingCoordinate, pinImageName: "StartingPointPin")
     }
-    func rideAccepted(driverId: String, lat: Double, long: Double) {
+    func rideAccepted(driverId: String, startingCoordinate: CLLocationCoordinate2D, destinationCoordinate: CLLocationCoordinate2D, address: String, time: Double, cost: Double, distance: Double) {
         print("the ride has been accepter by \(driverId)")
-        startingLocation = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        
+        startingLocation = startingCoordinate
+        infoView.InfoViewSetup(option: "sliderin")
+        isWaitingForRide = true 
+        //check this
+        passengerMapView.removeAvailableTaxiPins()
+        passengerMapView.AddPin(LatLong: destinationCoordinate, pinImageName: "DestinationPin")
+        passengerMapView.AddPin(LatLong: startingCoordinate, pinImageName: "StartingPointPin")
+        if passengerMapView.overlays.count == 0 {
+            passengerMapView.calculateRoute(origin: startingCoordinate, destination: destinationCoordinate)
+            
+        }
+        infoView.setupLabels(distance: distance, time: time, cost: cost, destinationAddress: address)
     }
-    
     func currentDriverLocation(currentLocation: CLLocationCoordinate2D) {
         let q = MKPlacemark(coordinate: currentLocation, addressDictionary: nil)
         print("place mark for current driver location : \(q)")
         currentDriverLocation = currentLocation
-        CoordinateHelper.Instance.calculateRoute(origin: startingLocation, destination: currentDriverLocation!) { (eta) in
-            self.InfoView.TaxiTrackerSlider.setupSlider(TotalTime: Float(eta), TrackingSlide: self.InfoView.TaxiTrackerSlider, view: self.InfoView.SliderView)
-                Animation.Instance.AnimateInfoView(infoView: self.InfoView)
+        CoordinateHelper.Instance.calculateRoute(origin: startingLocation, destination: currentDriverLocation!) { (eta,distance,response) in
+            self.infoView.TaxiTrackerSlider.setupSlider(TotalTime: (Float(eta)), TrackingSlide: self.infoView.TaxiTrackerSlider, view: self.infoView.SliderView)
+                //Animation.Instance.AnimateInfoView(infoView: self.infoView)
+                //infoView.InfoViewSetup(option:)
             
         }
-        MapView.AddPin(LatLong: currentLocation, pinImageName: "currentDriver")
+        
+        passengerMapView.AddPin(LatLong: currentLocation, pinImageName: "currentDriver")
+       
     }
     
     func rideCancelledByUser() {
-        InfoView.InfoViewSetup(option: "hideview")
-        let messageView = infoIndicatingView.init(frame: CGRect(x: 10, y: 10, width: UIScreen.main.bounds.width - 20, height: 50))
-        messageView.backgroundColor = UIColor(red: 196/255, green: 110/255, blue: 86/255, alpha: 0.8)
-        self.view.addSubview(messageView)
-        self.view.bringSubview(toFront: messageView)
-        messageView.changeText(message: "Request is cancelled by Passenger")
-        isWaitingForRide = false
+       
     }
     
     func rideCancelledByDriver() {
-        InfoView.InfoViewSetup(option: "hideview")
+        infoView.InfoViewSetup(option: "hideview")
         isWaitingForRide = false
     }
 
@@ -182,7 +207,7 @@ class  PassengerView: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
         locationManager.requestAlwaysAuthorization()
         if CLLocationManager.locationServicesEnabled(){
             locationManager.startUpdatingLocation()
-            MapView.showsUserLocation = true
+            passengerMapView.showsUserLocation = true
             
         }
     }
@@ -198,136 +223,59 @@ class  PassengerView: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
                 print("Error with place ID")
             }
             if place != nil {
-                print("Lat & long", place?.coordinate as Any)
-                //let coordinate = CoordinateHelper.Instance.findCoordinates(Placeid: PlID)
-                
                 let coordinate = place!.coordinate
-                //        let coordinate = instance.findCoordinates(Placeid: PlID)
                 var i:Int
                 if self.activeTextBox == self.DestinationTextView {
                     i = 1
-                    self.MapView.AddPin(LatLong: (coordinate), pinImageName: "DestinationPin")
+                    self.passengerMapView.AddPin(LatLong: (coordinate), pinImageName: "DestinationPin")
                 }
                 else {
                     i = 0
-                    self.MapView.AddPin(LatLong: (coordinate), pinImageName: "StartingPointPin")
+                    self.passengerMapView.AddPin(LatLong: (coordinate), pinImageName: "StartingPointPin")
                 }
                 
                 let center = CLLocationCoordinate2D(latitude: (coordinate.latitude), longitude:(coordinate.longitude))
                 let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
                 
-                self.MapView.setRegion(region, animated: true)
+                self.passengerMapView.setRegion(region, animated: true)
                 self.locationTuples[i].location = coordinate
                 self.locationTuples[i].mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinate, addressDictionary: self.DestinationTextView?.text as? [String: Any]))
-                self.CalculateRoute()
+                
+                //checking if both the location are set for both textfield.
+               self.checkIfEmpty()
             }
         })
         
     }
     
-    func CalculateRoute() {
-        
-        let request: MKDirectionsRequest = MKDirectionsRequest()
-        
-        request.source = locationTuples[0].mapItem
-        request.destination = locationTuples[1].mapItem
-        request.requestsAlternateRoutes = false
-        
-        request.transportType = .automobile
-        
-        let direction = MKDirections(request: request)
-        direction.calculate(completionHandler: {(response , error) in
-            if error != nil {
-                print("Direction not found")
-            }
-            else{
-                print("direction found" , response?.routes.count)
-                self.distance = (response?.routes.first?.distance)! * 0.000621371
-                self.ETA = (response?.routes.first?.expectedTravelTime)!/60
-                print("ETA" , self.distance , self.ETA)
-                self.DrawRoute(response: response!)
-            }
+    func checkIfEmpty(){
+        print("in here in echeck if empty \(locationTuples[0] ,locationTuples[1])")
+        if locationTuples[0].location != nil && locationTuples[1].location != nil {
+            print("in here in echeck if empty")
             
-        })
-    }
-    func DrawRoute(response: MKDirectionsResponse) {
-        print("We are in Drwa route", response)
-        if MapView.overlays.count != 0 {
-            for overlay in MapView.overlays{
-                MapView.remove(overlay)
-            }
-        }
-        for route in response.routes {
-            MapView.add(route.polyline, level: MKOverlayLevel.aboveRoads)
+            passengerMapView.calculateRoute(origin: locationTuples[0].location!, destination: locationTuples[1].location!)
+           CoordinateHelper.Instance.calculateRoute(origin: self.locationTuples[0].location!, destination: self.locationTuples[1].location!, completion: { (eta,distance,response) in
+                self.distance = distance * 0.000621371
+                self.ETA = eta/60
+                self.passengerMapView.drawRoute(response: response)
             
-            var ldelta = 0.0
-            var lodelta = 0.0
-            if self.distance <= 5.00 {
-                ldelta = 0.03
-                lodelta = 0.03
-            }
-            else if self.distance <= 12.00 {
-                ldelta = 0.07
-                lodelta = 0.07
-            }
-            else {
-                ldelta = 0.5
-                lodelta = 0.5
-            }
-            print("distance",self.distance,ldelta)
-            print(locationTuples[0].mapItem)
-            //let middlelocation = middleLocationWith(location1: locationTuples[0].location!, location2: locationTuples[1].location!)
-            //let center = CLLocationCoordinate2D(latitude: middlelocation.latitude, longitude:middlelocation.longitude)
-            //let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: ldelta, longitudeDelta: lodelta))
-            /*var rect = response.routes.first?.polyline.boundingMapRect
-             var kera = MKCoordinateRegionForMapRect(rect!)
-             rect?.size.width += 1000
-             rect?.size.height += 1000
-             
-             print("rect",rect)*/
-            //self.MapView.setRegion(region, animated: true)
-            let coo = response.routes.first?.polyline.coordinate
-            let Point: CGPoint = self.MapView.convert(coo!, toPointTo: self.MapView)
-            InfoView.ShowView(distance: self.distance.roudto(places: 1), time: self.ETA.roudto(places: 2), cost: 25.00, destinationAddress: (locationTuples[1].textfield?.text)!)
-            //AddPin(LatLong: coo!)
-            let steps = route.steps
+                print("checking distance \(self.distance,self.ETA)")
+                self.infoView.setupLabels(distance: self.distance.roudto(places: 1), time: self.passengerMapView.eta.roudto(places: 2), cost: 25.00, destinationAddress: (self.locationTuples[1].textfield?.text)!)
+            self.formButton.alpha = 1.0
+            self.formButton.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+            self.infoView.InfoViewSetup(option: "disTimein")
+            UIView.animate(withDuration: 0.5, animations: {
+                self.formButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+                self.formButton.transform = CGAffineTransform.identity
+            })
+            
+            self.view.endEditing(true)
+          })
         }
-        //animate > button
-        //done for today continue tomorrow .
-        self.formButton.alpha = 1.0
-        self.formButton.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
-        InfoView.InfoViewSetup(option: "disTimein")
-        //self.formButton.alpha = 1.0
-        UIView.animate(withDuration: 0.5, animations: {
-            self.formButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
-            self.formButton.transform = CGAffineTransform.identity
-        })
-        UIView.animate(withDuration: 0.5, delay: 0.45, options: .curveEaseIn, animations: {
-            self.formButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
-        }, completion: nil)
-        
-        //hide keyboard
-        self.view.endEditing(true)
-        
     }
     
-    func middleLocationWith(location1:CLLocationCoordinate2D,location2: CLLocationCoordinate2D) -> CLLocationCoordinate2D {
-        
-        let lon1 = location1.longitude * M_PI / 180
-        let lon2 = location2.longitude * M_PI / 180
-        let lat1 = location1.latitude * M_PI / 180
-        let lat2 = location2.latitude * M_PI / 180
-        let dLon = lon2 - lon1
-        let x = cos(lat2) * cos(dLon)
-        let y = cos(lat2) * sin(dLon)
-        
-        let lat3 = atan2( sin(lat1) + sin(lat2), sqrt((cos(lat1) + x) * (cos(lat1) + x) + y * y) )
-        let lon3 = lon1 + atan2(y, cos(lat1) + x)
-        
-        let center:CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat3 * 180 / M_PI, lon3 * 180 / M_PI)
-        return center
-    }
     
+
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !annotation.isKind(of: MKUserLocation.self) else {
@@ -363,7 +311,7 @@ class  PassengerView: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
         
-        self.MapView.setRegion(region, animated: true)
+        self.passengerMapView.setRegion(region, animated: true)
         
         CLGeocoder().reverseGeocodeLocation(locations.last!,completionHandler: {(placemarks , error) -> Void in
             if let placemarks = placemarks {
@@ -374,7 +322,7 @@ class  PassengerView: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
             }
         })
         if currentDriverLocation != nil {
-            MapView.AddPin(LatLong: currentDriverLocation!, pinImageName: "currentRider")
+            passengerMapView.AddPin(LatLong: currentDriverLocation!, pinImageName: "currentRider")
         }
         
         self.locationManager.stopUpdatingLocation()
@@ -391,9 +339,9 @@ class  PassengerView: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
     @IBAction func SearchRoute(_ sender: Any) {
         if !isWaitingForRide {
            
-       InfoView.InfoViewSetup(option: "hideview")
-        PopDownMenuView.isUserInteractionEnabled = true
-        Animation.Instance.animate(LocationFormView: PopDownMenuView.LocationFormView, PopDownMenuView: PopDownMenuView, PaymentView: PopDownMenuView.PaymentView, ApproxTotalLabel: PopDownMenuView.ApproxTotalLabel, searchButton: searchButton)
+       infoView.InfoViewSetup(option: "hideview")
+        popDownMenuView.isUserInteractionEnabled = true
+        Animation.Instance.animate(LocationFormView: popDownMenuView.LocationFormView, PopDownMenuView: popDownMenuView, PaymentView: popDownMenuView.PaymentView, ApproxTotalLabel: popDownMenuView.ApproxTotalLabel, searchButton: searchButton)
     }
         
     }
@@ -402,7 +350,7 @@ class  PassengerView: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
     func placeAutocomplete(text: String) {
         
         //getting the visible map area
-        let visibleRegion = self.MapView.visibleMapRect
+        let visibleRegion = self.passengerMapView.visibleMapRect
         let bounds = GMSCoordinateBounds(coordinate: edgePoints().ne,coordinate: edgePoints().sw)
         //set the filter to no filter in order to get the addressess for all the location
         let filter = GMSAutocompleteFilter()
@@ -437,10 +385,10 @@ class  PassengerView: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
     
     //getting the edge
     func edgePoints() -> Edges {
-        let nePoint = CGPoint(x: self.MapView.bounds.maxX, y: self.MapView.bounds.origin.y)
-        let swPoint = CGPoint(x: self.MapView.bounds.minX, y: self.MapView.bounds.maxY)
-        let neCoord = self.MapView.convert(nePoint, toCoordinateFrom: self.MapView)
-        let swCoord = self.MapView.convert(swPoint, toCoordinateFrom: self.MapView)
+        let nePoint = CGPoint(x: self.passengerMapView.bounds.maxX, y: self.passengerMapView.bounds.origin.y)
+        let swPoint = CGPoint(x: self.passengerMapView.bounds.minX, y: self.passengerMapView.bounds.maxY)
+        let neCoord = self.passengerMapView.convert(nePoint, toCoordinateFrom: self.passengerMapView)
+        let swCoord = self.passengerMapView.convert(swPoint, toCoordinateFrom: self.passengerMapView)
         return (ne: neCoord, sw: swCoord)
     }
     
@@ -458,10 +406,10 @@ class  PassengerView: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
     }
     
     @IBAction func CalculateApproxPrice(_ sender: Any) {
-        PopDownMenuView.ApproxTotalLabel.text = "Your Approximate total is £25.00"
+        popDownMenuView.ApproxTotalLabel.text = "Your Approximate total is £25.00"
         
         if Animation.Instance.ButtonStatus == true {
-            Animation.Instance.AnimatePayment(PaymentView: PaymentView)
+            Animation.Instance.AnimatePayment(paymentView: popDownMenuView.PaymentView)
         }
     }
     
@@ -511,8 +459,8 @@ class  PassengerView: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
         if isWaitingForRide {
             if let user = FIRAuth.auth()?.currentUser {
                 
-                InfoView.InfoViewSetup(option: "sliderin")
-                Animation.Instance.animate(LocationFormView: PopDownMenuView.LocationFormView, PopDownMenuView: PopDownMenuView, PaymentView: PopDownMenuView.PaymentView, ApproxTotalLabel: PopDownMenuView.ApproxTotalLabel, searchButton: searchButton)
+                infoView.InfoViewSetup(option: "sliderin")
+                Animation.Instance.animate(LocationFormView: popDownMenuView.LocationFormView, PopDownMenuView: popDownMenuView, PaymentView: popDownMenuView.PaymentView, ApproxTotalLabel: popDownMenuView.ApproxTotalLabel, searchButton: searchButton)
                 passengerHandler.Instance.rideRequested(email: StartingPointTextBox.text!, userId: user.uid, startingAddress: (locationTuples[0].textfield?.text)!, startingLat: (locationTuples[0].location?.latitude)!, startingLong: (locationTuples[0].location?.longitude)!, destinationAddress: (locationTuples[1].textfield?.text)! , destinationLat: (locationTuples[1].location?.latitude)!, destinationLong: (locationTuples[1].location?.longitude)!, cost: 25.40 , distance: self.distance.roudto(places: 1) , duration: self.ETA.roudto(places: 0))
                 
                 
@@ -532,12 +480,30 @@ class  PassengerView: UIViewController,MKMapViewDelegate, CLLocationManagerDeleg
     
     @IBAction func cancelRide(_ sender: Any) {
         if isWaitingForRide {
+        infoView.InfoViewSetup(option: "hideview")
+        messageView = infoIndicatingView.init(frame: CGRect(x: 10, y: 10, width: UIScreen.main.bounds.width - 20, height: 50))
+            messageView.backgroundColor = UIColor(red: 196/255, green: 110/255, blue: 86/255, alpha: 0.8)
+        self.view.addSubview(messageView)
+        self.view.bringSubview(toFront: messageView)
+        messageView.changeText(message: "Request is cancelled by Passenger")
         isWaitingForRide = false
         passengerHandler.Instance.cancelRide()
-        PopDownMenuView.clearForm()
+        popDownMenuView.initialSetup()
+        locationTuples = [(StartingPointTextBox,nil,nil),(DestinationTextView,nil,nil)]
+        //removing overlays if present
+        for overlay in passengerMapView.overlays{
+                passengerMapView.remove(overlay)
+            }
+            //removing annotation for the startign point and destination
+            for annotation in passengerMapView.annotations {
+                if let title = annotation.title, (title == "Starting Point") || (title == "Destination") {
+                    passengerMapView.removeAnnotation(annotation)
+            }
+            }
         }
     }
-}
+}//end of class
+    
 extension NSLayoutConstraint {
     func constraintWithMultiplier(multiplier: CGFloat) -> NSLayoutConstraint {
         return NSLayoutConstraint(item: self.firstItem, attribute: self.firstAttribute, relatedBy: self.relation, toItem: self.secondItem, attribute: self.secondAttribute, multiplier: multiplier, constant: self.constant)

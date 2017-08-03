@@ -36,31 +36,32 @@ class CoordinateHelper {
         
     }
     
-    func calculateRoute(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, completion: @escaping (Double) -> ())  {
+    func calculateRoute(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, completion: @escaping (Double,Double,MKDirectionsResponse) -> ())  {
         DispatchQueue.global(qos: .userInteractive).async {
             let request: MKDirectionsRequest = MKDirectionsRequest()
             let originMapItem = MKMapItem(placemark: MKPlacemark(coordinate: origin, addressDictionary: nil))
             let destinationMapItem = MKMapItem(placemark: MKPlacemark(coordinate: destination, addressDictionary: nil))
             var eta = Double()
+            var distance = Double()
             request.source = originMapItem
             request.destination = destinationMapItem
             request.requestsAlternateRoutes = false
             request.transportType = .automobile
-            let group = DispatchGroup()
             
             let direction = MKDirections(request: request)
             print("eta from singleton 1",eta)
             //group.enter()
             
-            direction.calculateETA { (response, error) in
+            direction.calculate { (response, error) in
                 print("eta from singleton 2",eta)
                 if error == nil {
-                    eta = (response?.expectedTravelTime)!
+                    eta = (response?.routes.first?.expectedTravelTime)!
+                    distance = (response?.routes.first?.distance)!
                     
                     print("eta from singleton",eta)
                     print("completion")
                     DispatchQueue.main.async {
-                    completion(eta)
+                    completion(eta,distance,response!)
                     }
                 }
                 else{
@@ -87,6 +88,22 @@ class CoordinateHelper {
       
         print("the address is \(address) ",mapItem)
         return mapItem
+    }
+    func middleLocationWith(location1:CLLocationCoordinate2D,location2: CLLocationCoordinate2D) -> CLLocationCoordinate2D {
+        
+        let lon1 = location1.longitude * M_PI / 180
+        let lon2 = location2.longitude * M_PI / 180
+        let lat1 = location1.latitude * M_PI / 180
+        let lat2 = location2.latitude * M_PI / 180
+        let dLon = lon2 - lon1
+        let x = cos(lat2) * cos(dLon)
+        let y = cos(lat2) * sin(dLon)
+        
+        let lat3 = atan2( sin(lat1) + sin(lat2), sqrt((cos(lat1) + x) * (cos(lat1) + x) + y * y) )
+        let lon3 = lon1 + atan2(y, cos(lat1) + x)
+        
+        let center:CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat3 * 180 / M_PI, lon3 * 180 / M_PI)
+        return center
     }
     
 }

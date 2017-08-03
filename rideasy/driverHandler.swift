@@ -13,7 +13,7 @@ import CoreLocation
 
 protocol RideController: class {
     func showride(lat: Double, long: Double, passengerId: String, startingAddress: String)
-    func rideAccepted(lat: Double, long: Double)
+    func rideAccepted(pickupCoordinate: CLLocationCoordinate2D, pickupAddress: String, destinationCoordinate: CLLocationCoordinate2D, destionAddress: String)
 }
 
 class driverHandler {
@@ -59,7 +59,7 @@ class driverHandler {
                 print("ride accepted data \(data)")
                 if let lat = data[constants.STARTING_LATITUDE] as? Double{
                     if let long = data[constants.STARTING_LONGITUDE] as? Double {
-                        self.delegate?.rideAccepted(lat: lat, long: long)
+                        //self.delegate?.rideAccepted(lat: lat, long: long)
                     }
                 }
             }
@@ -72,13 +72,15 @@ class driverHandler {
             for snap in snapshot.children {
                 let snap = snap as! FIRDataSnapshot
                 if let data = snap.value as? NSDictionary {
-                var newdata = Dictionary<String,Any?>()
-                    newdata = [constants.DRIVER_ID: self.driverID , constants.DRIVER_NAME: self.driverName ,constants.STARTING_ADDRESS: data[constants.STARTING_ADDRESS] as! String!, constants.DESTINATION_ADDRESS: data[constants.DESTINATION_ADDRESS] as! String!, constants.PASSENGER_ID: passenId, constants.STARTING_LATITUDE: data[constants.STARTING_LATITUDE] as! Double,constants.STARTING_LONGITUDE : data[constants.STARTING_LONGITUDE] as! Double]
+                var newdata = NSDictionary()
+                    newdata = [constants.DRIVER_ID: self.driverID , constants.DRIVER_NAME: self.driverName ,constants.STARTING_ADDRESS: data[constants.STARTING_ADDRESS] as! String!, constants.DESTINATION_ADDRESS: data[constants.DESTINATION_ADDRESS] as! String!, constants.PASSENGER_ID: passenId, constants.STARTING_LATITUDE: data[constants.STARTING_LATITUDE] as! Double,constants.STARTING_LONGITUDE : data[constants.STARTING_LONGITUDE] as! Double, constants.COST: data[constants.COST] as! Double, constants.TIME: data[constants.TIME] as! Double, constants.DISTANCE: data[constants.DISTANCE] as! Double , constants.DESTINATION_LATITUDE: data[constants.DESTINATION_LATITUDE] as! Double, constants.DESTINATION_LONGITUDE : data[constants.DESTINATION_LONGITUDE] as! Double]
                     
-                
+                    let pickupCoordinate = CLLocationCoordinate2DMake(newdata[constants.STARTING_LATITUDE] as! Double, newdata[constants.STARTING_LONGITUDE] as! Double)
+                    let destinationCoordinate = CLLocationCoordinate2DMake(newdata[constants.DESTINATION_LATITUDE] as! Double, newdata[constants.DESTINATION_LONGITUDE] as! Double)
                 DBProvider.Instance.rideAcceptedReference.childByAutoId().setValue(newdata)
                 
-                    DBProvider.Instance.rideRequestReference.child(snap.key).removeValue(completionBlock: { (error, ref) in
+                    self.delegate?.rideAccepted(pickupCoordinate: pickupCoordinate, pickupAddress: newdata[constants.STARTING_ADDRESS] as! String, destinationCoordinate: destinationCoordinate, destionAddress: newdata[constants.DESTINATION_ADDRESS] as! String)
+                DBProvider.Instance.rideRequestReference.child(snap.key).removeValue(completionBlock: { (error, ref) in
                     if error == nil {
                         print("data deleted")
                     }
@@ -107,12 +109,39 @@ class driverHandler {
         
        
     }
-    func NonAccepetedRideRequest(){
+    func nonAccepetedRideRequest(){
         DBProvider.Instance.rideRequestReference.observeSingleEvent(of: FIRDataEventType.value) { (snapshot: FIRDataSnapshot) in
             if let data = snapshot.value{
                     print(data)
             }
             
         }
+    }
+    func cancelRideRequest(){
+        //todo--
+        let ref = DBProvider.Instance.rideAcceptedReference.queryOrdered(byChild: constants.DRIVER_ID).queryEqual(toValue: DBProvider.Instance.currentUserId)
+        ref.observe(.value, with: { (snapshot) in
+            for snap in snapshot.children {
+                let snap = snap as! FIRDataSnapshot
+                if let data = snap.value as? NSDictionary {
+                    var newdata = NSDictionary()
+                    newdata = [constants.NAME: data[constants.PASSENGER_ID] as! String, constants.STARTING_ADDRESS: data[constants.STARTING_ADDRESS] as! String,constants.STARTING_LATITUDE: data[constants.STARTING_LATITUDE] as! Double,constants.STARTING_LONGITUDE: data[constants.STARTING_LONGITUDE] as! Double,constants.DESTINATION_ADDRESS: data[constants.DESTINATION_ADDRESS] as! String,constants.DESTINATION_LATITUDE: data[constants.DESTINATION_LATITUDE] as! Double,constants.DESTINATION_LONGITUDE: data[constants.DESTINATION_LONGITUDE] as! Double,constants.TIME: data[constants.TIME] as! Double,constants.COST: data[constants.COST] as! Double,constants.DISTANCE: data[constants.DISTANCE] as! Double]
+                    
+                   //add the ride request again
+                    DBProvider.Instance.rideRequestReference.childByAutoId().setValue(newdata)
+                    
+                    //deleting the ride accpeted data 
+                    DBProvider.Instance.rideAcceptedReference.child(snap.key).removeValue(completionBlock: { (error, snapshot) in
+                        if error == nil {
+                            print("data has been deleted.")
+                        }
+                        else{
+                            print("something went wrong")
+                        }
+                    })
+                }
+            }
+        })
+        
     }
 }

@@ -1183,6 +1183,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T4k-uL-ltS" customClass="infoView" customModule="rideasy" customModuleProvider="target">
                                 <rect key="frame" x="-8" y="367" width="383" height="300"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqe-g0-BUQ">
+                                        <rect key="frame" x="175" y="-15" width="33" height="33"/>
+                                        <state key="normal" image="Back_arrow"/>
+                                        <connections>
+                                            <action selector="slideButtonPressed:" destination="T4k-uL-ltS" eventType="touchUpInside" id="xhM-dm-PFJ"/>
+                                        </connections>
+                                    </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0t9-gb-Gqf">
                                         <rect key="frame" x="20" y="10" width="343" height="282"/>
                                         <subviews>
@@ -1340,6 +1347,8 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="0t9-gb-Gqf" secondAttribute="bottom" constant="8" id="6qi-ml-ZxE"/>
                                     <constraint firstItem="0t9-gb-Gqf" firstAttribute="leading" secondItem="T4k-uL-ltS" secondAttribute="leading" constant="20" id="NPh-tZ-zob"/>
+                                    <constraint firstItem="mqe-g0-BUQ" firstAttribute="centerX" secondItem="T4k-uL-ltS" secondAttribute="centerX" id="liq-3b-tzK"/>
+                                    <constraint firstItem="mqe-g0-BUQ" firstAttribute="top" secondItem="T4k-uL-ltS" secondAttribute="top" constant="-15" id="rtL-tZ-CId"/>
                                     <constraint firstAttribute="trailing" secondItem="0t9-gb-Gqf" secondAttribute="trailing" constant="20" id="u3A-Tm-Yqk"/>
                                     <constraint firstItem="0t9-gb-Gqf" firstAttribute="top" secondItem="T4k-uL-ltS" secondAttribute="top" constant="10" id="xWU-vd-gGV"/>
                                 </constraints>
@@ -1351,12 +1360,16 @@
                                     <outlet property="buttonStackView" destination="6pY-uN-cdC" id="4HG-5M-LiA"/>
                                     <outlet property="callDriverButton" destination="Ek7-nj-yXj" id="AVL-5I-Tj0"/>
                                     <outlet property="cancelTaxiButton" destination="kzu-S3-CMJ" id="DLl-Dw-dYJ"/>
+                                    <outlet property="costImage" destination="DMf-0K-40X" id="Y2c-YM-eog"/>
                                     <outlet property="costLabel" destination="o9K-ww-a5N" id="aqh-Ft-SKw"/>
                                     <outlet property="destinationAddressLabel" destination="EwO-xs-h0g" id="Vz8-qs-mfA"/>
+                                    <outlet property="distanceImage" destination="fO2-5a-iF9" id="955-dN-bgB"/>
                                     <outlet property="distanceLabel" destination="vxM-19-iIa" id="N10-mb-RBn"/>
                                     <outlet property="infoViewHeight" destination="sAn-uJ-OXw" id="p3x-WM-yYN"/>
                                     <outlet property="mainStackview" destination="0t9-gb-Gqf" id="Hdt-Yb-ftf"/>
+                                    <outlet property="slideBtn" destination="mqe-g0-BUQ" id="O4d-n4-Sty"/>
                                     <outlet property="timeApproxStackview" destination="LEz-1a-jAv" id="jI1-um-8qw"/>
+                                    <outlet property="timeImage" destination="FGM-BB-8c7" id="5O9-i0-QBu"/>
                                     <outlet property="timeLabel" destination="FCr-Jr-G4b" id="VdX-VZ-ma4"/>
                                 </connections>
                             </view>
@@ -1393,12 +1406,11 @@
                         <outlet property="DestinationTextView" destination="h6P-C8-aZl" id="oYH-nP-O3Y"/>
                         <outlet property="InfoView" destination="T4k-uL-ltS" id="MIv-ES-B0c"/>
                         <outlet property="LocationFormStackView" destination="lnb-Ho-lGa" id="yis-cY-avt"/>
-                        <outlet property="MapView" destination="yDT-sM-3LD" id="ggz-r7-6KU"/>
                         <outlet property="NavBarMenuItem" destination="at6-ln-g4Q" id="QfA-uQ-VEV"/>
-                        <outlet property="PaymentView" destination="eFq-7W-QYG" id="qPg-Zy-Alc"/>
-                        <outlet property="PopDownMenuView" destination="GSy-k3-djp" id="gjN-Rl-dOb"/>
                         <outlet property="StartingPointTextBox" destination="GQl-qG-AgI" id="OPl-IX-QBP"/>
                         <outlet property="formButton" destination="GId-WC-1uh" id="KjU-Zr-hXa"/>
+                        <outlet property="passengerMapView" destination="yDT-sM-3LD" id="BWY-Rr-3O6"/>
+                        <outlet property="popDownMenuView" destination="GSy-k3-djp" id="en3-Em-KGz"/>
                         <outlet property="searchButton" destination="2nW-ll-vbl" id="Pcg-l7-ZS8"/>
                     </connections>
                 </viewController>
@@ -1450,6 +1462,73 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="trp-rY-9xp" customClass="DriverMapView" customModule="rideasy" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="108.5" width="375" height="558.5"/>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFZ-6f-zrh" customClass="infoViewForDrivers" customModule="rideasy" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="533.5" width="375" height="133.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6Rr-wm-2cB">
+                                        <rect key="frame" x="20" y="15" width="335" height="103.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="FEU-lF-hFD">
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5P7-Jx-X2f">
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="20.5"/>
+                                                        <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="18"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2t-Ze-jc0">
+                                                        <rect key="frame" x="0.0" y="25.5" width="335" height="18.5"/>
+                                                        <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="16"/>
+                                                        <color key="textColor" red="0.2470588235" green="0.36862745099999999" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="gWK-0O-Obm">
+                                                <rect key="frame" x="0.0" y="64" width="335" height="39.5"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mFC-W0-zba">
+                                                        <rect key="frame" x="0.0" y="0.0" width="103" height="39.5"/>
+                                                        <color key="backgroundColor" red="0.18823529410000001" green="0.20392156859999999" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="17"/>
+                                                        <state key="normal" title="START RIDE">
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="startRide:" destination="1Fx-vl-Trc" eventType="touchDown" id="W1Q-ju-WOi"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jjD-AU-a6L">
+                                                        <rect key="frame" x="222" y="0.0" width="113" height="39.5"/>
+                                                        <color key="backgroundColor" red="0.18823529410000001" green="0.20392156859999999" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="17"/>
+                                                        <state key="normal" title="CANCEL TAXI">
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="cancelRide:" destination="1Fx-vl-Trc" eventType="touchDown" id="cIO-vH-RCL"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.85098039219999999" green="0.34901960780000002" blue="0.29803921570000003" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="6Rr-wm-2cB" secondAttribute="bottom" constant="15" id="Emi-Sx-nZp"/>
+                                    <constraint firstItem="6Rr-wm-2cB" firstAttribute="leading" secondItem="CFZ-6f-zrh" secondAttribute="leading" constant="20" id="PFb-eo-yl8"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Rr-wm-2cB" secondAttribute="trailing" constant="20" id="Pu2-iV-1dw"/>
+                                    <constraint firstItem="6Rr-wm-2cB" firstAttribute="top" secondItem="CFZ-6f-zrh" secondAttribute="top" constant="15" id="ZMv-OZ-tNo"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="addressLabel" destination="5P7-Jx-X2f" id="9x9-Av-oeP"/>
+                                    <outlet property="cancelRideBtn" destination="jjD-AU-a6L" id="LpQ-ug-iBU"/>
+                                    <outlet property="destinationIndicatingLabel" destination="d2t-Ze-jc0" id="yhU-CK-nMI"/>
+                                    <outlet property="startRideBtn" destination="mFC-W0-zba" id="SLp-c8-TRh"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1458,9 +1537,13 @@
                             <constraint firstItem="trp-rY-9xp" firstAttribute="top" secondItem="7ey-AD-mPK" secondAttribute="bottom" id="NmB-mU-UEt"/>
                             <constraint firstItem="trp-rY-9xp" firstAttribute="leading" secondItem="p6h-8e-e8f" secondAttribute="leading" id="ORE-nM-gyf"/>
                             <constraint firstItem="7ey-AD-mPK" firstAttribute="height" secondItem="trp-rY-9xp" secondAttribute="height" multiplier="0.08" id="ZC4-fM-Yl7"/>
+                            <constraint firstAttribute="trailing" secondItem="CFZ-6f-zrh" secondAttribute="trailing" id="bg9-hr-MUa"/>
+                            <constraint firstItem="C1l-C3-Gt5" firstAttribute="top" secondItem="CFZ-6f-zrh" secondAttribute="bottom" id="lXP-W2-0Fe"/>
                             <constraint firstItem="C1l-C3-Gt5" firstAttribute="top" secondItem="trp-rY-9xp" secondAttribute="bottom" id="o81-pb-usJ"/>
                             <constraint firstAttribute="trailing" secondItem="7ey-AD-mPK" secondAttribute="trailing" id="oX1-hH-E12"/>
                             <constraint firstItem="7ey-AD-mPK" firstAttribute="top" secondItem="EBm-Sj-NyH" secondAttribute="bottom" id="tUo-dL-ju4"/>
+                            <constraint firstItem="CFZ-6f-zrh" firstAttribute="leading" secondItem="p6h-8e-e8f" secondAttribute="leading" id="uwq-vt-oO2"/>
+                            <constraint firstItem="CFZ-6f-zrh" firstAttribute="height" secondItem="p6h-8e-e8f" secondAttribute="height" multiplier="0.2" id="wew-xz-LIV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Driver" id="lvS-if-Syi">
@@ -1468,13 +1551,14 @@
                     </navigationItem>
                     <connections>
                         <outlet property="StatusSwitch" destination="vwe-Jk-3za" id="O31-QX-CSt"/>
+                        <outlet property="infoView" destination="CFZ-6f-zrh" id="olN-m3-qBj"/>
                         <outlet property="mapDisplayView" destination="trp-rY-9xp" id="glv-Kj-YsB"/>
                         <outlet property="menu" destination="1gD-eg-zpM" id="IIG-9Y-QCD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="agh-fx-9ag" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="174" y="1470"/>
+            <point key="canvasLocation" x="173.59999999999999" y="1469.4152923538231"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="nMF-6h-F2w">
@@ -3208,6 +3292,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Back_arrow" width="33" height="33"/>
         <image name="Cancel" width="33" height="33"/>
         <image name="Delete-50" width="35" height="35"/>
         <image name="Driver" width="30" height="30"/>

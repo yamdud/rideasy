@@ -11,8 +11,8 @@ import FirebaseDatabase
 import CoreLocation
 
 protocol rideAcceptedProtocol: class {
-    func rideRequested(time: Double, distance: Double, cost: Double , destinationAdd: String)
-    func rideAccepted(driverId: String, lat: Double, long: Double)
+    func rideRequested(time: Double, distance: Double, cost: Double , destinationAdd: String, destinationCoordinate: CLLocationCoordinate2D, startingCoordinate: CLLocationCoordinate2D)
+    func rideAccepted(driverId: String, startingCoordinate: CLLocationCoordinate2D, destinationCoordinate: CLLocationCoordinate2D, address: String,time: Double, cost: Double, distance: Double)
     func currentDriverLocation(currentLocation: CLLocationCoordinate2D)
     func rideCancelledByUser()
     func rideCancelledByDriver()
@@ -40,8 +40,6 @@ class passengerHandler {
     }
     
     func acceptedRide() {
-        print("acceptedRide")
-        if isRideAcceptedByDriver {
             queryUsingPassengerIdForRideAccepted.observe(.childAdded, with: { (snapshot) in
                 let value = snapshot.value as? NSDictionary
                 print("the value \(value)")
@@ -49,27 +47,36 @@ class passengerHandler {
                 if let driverID = value?[constants.DRIVER_ID] as! String!{
                     let lat = value?[constants.STARTING_LATITUDE] as! Double
                     let long = value?[constants.STARTING_LONGITUDE] as! Double
+                    let startingAddress = value?[constants.STARTING_ADDRESS] as! String
+                    let destinationCoordinate = CLLocationCoordinate2DMake(value?[constants.DESTINATION_LATITUDE] as! Double, value?[constants.DESTINATION_LONGITUDE] as! Double)
+                    let startingCoordinate = CLLocationCoordinate2DMake(value?[constants.STARTING_LATITUDE] as! Double, value?[constants.STARTING_LONGITUDE] as! Double)
+                    let time = value?[constants.TIME] as! Double
+                    let cost = value?[constants.COST] as! Double
+                    let distanceFrom = value?[constants.DISTANCE] as! Double
                     self.updateCurrentDriverLocation(driverId: driverID)
-                    self.delegate?.rideAccepted(driverId : driverID, lat: lat, long: long)
+                    self.delegate?.rideAccepted(driverId : driverID, startingCoordinate: startingCoordinate, destinationCoordinate: destinationCoordinate, address: startingAddress,time: time,cost: cost,distance: distanceFrom)
                     self.isRideAcceptedByDriver = true
                 }
             })
-        }
-        else {
+    }
+    
+        func rideRequestedButNotAccepted(){
+       
             queryUsingPassengerIdForRideRequest.observe(.childAdded, with: { (snapshot) in
                 if let value = snapshot.value as? NSDictionary {
                     let cost = value[constants.COST] as! Double
                     let time = value[constants.TIME] as! Double
                     let distance = value[constants.DISTANCE] as! Double
+                    let destinationCoordinate = CLLocationCoordinate2DMake(value[constants.DESTINATION_LATITUDE] as! Double, value[constants.DESTINATION_LONGITUDE] as! Double)
+                    let startingCoordinate = CLLocationCoordinate2DMake(value[constants.STARTING_LATITUDE] as! Double, value[constants.STARTING_LONGITUDE] as! Double)
                     let destinationAddress = value[constants.DESTINATION_ADDRESS] as! String
-                    self.delegate?.rideRequested(time: time, distance: distance, cost: cost, destinationAdd: destinationAddress)
+                    self.delegate?.rideRequested(time: time, distance: distance, cost: cost, destinationAdd: destinationAddress, destinationCoordinate: destinationCoordinate, startingCoordinate:  startingCoordinate)
                     
                 }
                 print("")
                 
             })
-        }
-       
+        
     }
     func cancelRide(){
         if isRideAcceptedByDriver {

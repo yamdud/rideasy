@@ -42,6 +42,8 @@ class rideRequestForm: UIView {
         self.isHidden = true
         self.isUserInteractionEnabled = false
         formButton.alpha = 0.0
+        StartingPointTextBox.text = ""
+        DestinationTextView.text = ""
     }
     
     
@@ -79,8 +81,7 @@ class rideRequestForm: UIView {
         })
     }
     func clearForm(){
-        StartingPointTextBox.text = ""
-        DestinationTextView.text = "" 
+       
     }
 
 //    func createTable(view: UIView)  {

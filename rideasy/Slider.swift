@@ -36,17 +36,19 @@ class Slider: UISlider {
     func setupSlider(TotalTime: Float, TrackingSlide: UISlider, view: UIView){
         TrackingSlider = TrackingSlide
         TrackingSlider.maximumValue = TotalTime
-        var totalTime = 0
-
+        var totalTime = Int(TotalTime)
         //--MARK--fix for 1 minute instead of 60 sec.
         if #available(iOS 10.0, *) {
             _ = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: {_ in
                 if self.TrackingSlider.maximumValue != self.TrackingSlider.value{
                     self.TrackingSlider.value = self.TrackingSlider.value + 1.0
                     print(self.TrackingSlider.value)
+                    var newTime = 0
                     
-                    totalTime = (Int(TotalTime) - 1)/60
-                    self.timeLabel.text = "\(totalTime) min"
+                    newTime = (Int(totalTime) - 1)/60
+                    totalTime -= 1
+                    self.timeLabel.text = "\(newTime) min"
+                    print("total time \(totalTime, TotalTime)")
                 }
                 
             })
