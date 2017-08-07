@@ -26,14 +26,20 @@ class DBProvider {
     var DriverReference: FIRDatabaseReference {
         return ref.child(constants.DRIVERS)
     }
-    
+    var onlineDriverReference: FIRDatabaseReference {
+        return ref.child(constants.AVAILABLE_RIDE)
+    }
     var rideRequestReference: FIRDatabaseReference {
         return ref.child(constants.RIDE_REQUEST)
     }
     var rideAcceptedReference: FIRDatabaseReference{
         return ref.child(constants.RIDE_ACCEPTED)
     }
-
+    
+    var rideActiveReference: FIRDatabaseReference{
+        return ref.child(constants.RIDE_ACTIVE)
+    }
+    
     var currentUserId: String {
        return (FIRAuth.auth()?.currentUser?.uid)!
     }

@@ -151,6 +151,9 @@ class DriverVC: UIViewController, MKMapViewDelegate, RideController, CLLocationM
         
         mapDisplayView.setRegion(region, animated: true)
         currentLocation = (location?.coordinate)!
+        if !rideAccepeted {
+                driverHandler.Instance.updateCurrentLocationForAvailableDriver(location: currentLocation)
+        }
         
         locationManager.stopUpdatingLocation()
         
@@ -169,6 +172,18 @@ class DriverVC: UIViewController, MKMapViewDelegate, RideController, CLLocationM
     }
     
     @IBAction func startRide(_ sender: Any) {
+        print("Ride has been started")
+        let time = Date()
+        let  calender = NSCalendar.current
+        let components = calender.dateComponents([.hour,.minute,.day,.month,.year], from: time)
+        print("current time is \(components.hour , components.minute)")
+        if #available(iOS 10.0, *) {
+            _ = Timer(timeInterval: 0.1, repeats: true) { (timeer) in
+                
+            }
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
 

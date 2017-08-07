@@ -16,8 +16,11 @@ class constants {
     static let EMAIL = "email"
     static let DATA = "data"
     static let isRider = "isRider"
+    static let AVAILABLE_RIDE = "Ride_Available"
     static let RIDE_REQUEST = "Ride_Request"
     static let RIDE_ACCEPTED = "Ride_Accepted"
+    static let RIDE_ACTIVE = "Ride_Active"
+
     
     //sub tree 
     static let RIDE_DETAILS = "Ride_Details"
@@ -40,10 +43,15 @@ class constants {
     //Driver handler 
     static let DRIVER_NAME = "DRIVER_NAME"
     static let DRIVER_ID = "DRIVER_ID"
+    static let DRIVER_LOCATION_LAT = "DRIVER_LOCATION_LAT"
+    static let DRIVER_LOCATION_LONG = "DRIVER_LOCATION_LONG"
+    
     
     //ride accepted
     static let PASSENGER_ID = "PASSENGER_ID"
     static let CURRENT_DRIVER_LOCATION = "CURRENT_DRIVER_LOCATION"
     static let CURRENT_DRIVER_LOCATION_LAT = "CURRENT_DRIVER_LOCATION_LAT"
     static let CURRENT_DRIVER_LOCATION_LONG = "CURRENT_DRIVER_LOCATION_LONG"
+    
+    
 }

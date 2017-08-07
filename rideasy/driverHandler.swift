@@ -77,10 +77,12 @@ class driverHandler {
                     
                     let pickupCoordinate = CLLocationCoordinate2DMake(newdata[constants.STARTING_LATITUDE] as! Double, newdata[constants.STARTING_LONGITUDE] as! Double)
                     let destinationCoordinate = CLLocationCoordinate2DMake(newdata[constants.DESTINATION_LATITUDE] as! Double, newdata[constants.DESTINATION_LONGITUDE] as! Double)
+                //moving the data to a new tree
                 DBProvider.Instance.rideAcceptedReference.childByAutoId().setValue(newdata)
                 
                     self.delegate?.rideAccepted(pickupCoordinate: pickupCoordinate, pickupAddress: newdata[constants.STARTING_ADDRESS] as! String, destinationCoordinate: destinationCoordinate, destionAddress: newdata[constants.DESTINATION_ADDRESS] as! String)
-                DBProvider.Instance.rideRequestReference.child(snap.key).removeValue(completionBlock: { (error, ref) in
+                //deleting the ride request data.
+                    DBProvider.Instance.rideRequestReference.child(snap.key).removeValue(completionBlock: { (error, ref) in
                     if error == nil {
                         print("data deleted")
                     }
@@ -143,5 +145,23 @@ class driverHandler {
             }
         })
         
+    }
+    
+    //storing the location of all online drivers. 
+    func updateCurrentLocationForAvailableDriver(location: CLLocationCoordinate2D){
+        let data = NSDictionary()
+        data = [constants.DRIVER_ID: "", constants.DRIVER_LOCATION_LAT : location.latitude as! Double, constants.DRIVER_LOCATION_LONG: location.longitude as! Double]
+        DBProvider.Instance.onlineDriverReference.childByAutoId().setValue(data)
+    }
+    
+    
+    func activeRide(){
+        let data = NSDictionary()
+        
+        //driver id, passenger id, starting location, destination, address both starting and destination, distance covered, total charge, time taken 
+        
+        data = [constants.DRIVER_ID: "", constants.PASSENGER_ID: "", constants.STARTING_ADDRESS: "" , constants.STARTING_LONGITUDE: "", constants.STARTING_LATITUDE: "", constants.DESTINATION_ADDRESS: "", constants.DESTINATION_LATITUDE: "", constants.DESTINATION_LONGITUDE
+            : ""]
+        DBProvider.Instance.rideActiveReference.childByAutoId().setValue(data)
     }
 }

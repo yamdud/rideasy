@@ -142,5 +142,12 @@ class passengerHandler {
     
         })
     }
+    
+    func updateLocationOfAllAvailableDrivers(){
+        //todo
+        DBProvider.Instance.onlineDriverReference.observe(.childAdded,with: { (snapshot) in
+            <#code#>
+        })
+    }
    
 }
